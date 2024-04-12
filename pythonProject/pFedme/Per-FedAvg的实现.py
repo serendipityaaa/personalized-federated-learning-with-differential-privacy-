@@ -4,7 +4,7 @@ import flgo.benchmark.partition as fbp
 from flgo.experiment.logger.pool import PFLLogger
 import flgo.experiment.analyzer
 task = './my_task1'
-flgo.gen_task_by_(mnist, fbp.IIDPartitioner(num_clients=4), task)
+flgo.gen_task_by_(mnist, fbp.IIDPartitioner(num_clients=10), task)
 runner = flgo.init(task, pfedme, option={'num_rounds':20, 'local_test':True, 'learning_rate':0.005, }, Logger=PFLLogger)
 runner.run()
 analysis_plan = {

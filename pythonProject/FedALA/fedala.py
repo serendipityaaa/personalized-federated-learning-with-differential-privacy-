@@ -9,6 +9,8 @@ import torch
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import Subset
 import numpy as np
+from opacus import PrivacyEngine
+
 
 class Server(flgo.algorithm.fedbase.BasicServer):
     def initialize(self):

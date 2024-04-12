@@ -1,16 +1,22 @@
-import fedpac
+import flgo.algorithm.fedbase as fedbase
+import flgo.algorithm.fedavg as fedavg
+import flgo.utils.fmodule as fmodule
+import os
+import flgo
+import flgo.experiment.analyzer
+import copy
+import torch
 import flgo.benchmark.mnist_classification as mnist
 import flgo.benchmark.partition as fbp
-from flgo.experiment.logger.pool import PFLLogger
-import flgo.experiment.analyzer
+
 task = './my_task1'
-flgo.gen_task_by_(mnist, fbp.IIDPartitioner(num_clients=10), task)
-runner = flgo.init(task, fedpac, option={'num_rounds':20, 'local_test':True, 'learning_rate':0.005, }, Logger=PFLLogger)
-runner.run()
+# flgo.gen_task_by_(mnist, fbp.IIDPartitioner(num_clients=10), task)
+# runner = flgo.init(task, fedavg, option={'num_rounds':5, 'local_test':True, 'learning_rate':0.005, })
+# runner.run()
 analysis_plan = {
     'Selector':{
         'task': task,
-        'header':['fedpac']
+        'header':['fedavg','fedavg_DP']
     },
     'Painter':{
         'Curve':[
